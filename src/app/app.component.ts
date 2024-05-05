@@ -11,7 +11,7 @@ import { ChartConfiguration, ChartDataset, ChartOptions } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
-  hostname: 'localhost',
+  hostname: '3.128.26.206',
   port: 9001,
   path: '/',
   protocol: 'ws',
