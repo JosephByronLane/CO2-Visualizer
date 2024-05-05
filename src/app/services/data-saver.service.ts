@@ -17,6 +17,6 @@ export class DataSaverService {
   }
 
   public fetchData(topic: string) {
-    return this.http.get<any[]>(`http://3.145.182.180:3000/data/${topic}`);
+    return this.http.get<any[]>(`http://3.145.182.180:3000/data/${topic}`);    
   }
 }

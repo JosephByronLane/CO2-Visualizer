@@ -5,8 +5,10 @@ const app = express();
 const port = 3000;
 
 // Enable CORS for all routes and origins
-app.use(cors());
-
+const corsOptions = {
+    origin: '*'
+  };
+app.use(cors(corsOptions));
 app.use(express.json());
 
 app.post('/save-data/:topic', (req, res) => {
