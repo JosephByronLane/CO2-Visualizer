@@ -30,5 +30,53 @@
     "humidity": 36.50713,
     "co2": 400,
     "timestamp": "2024-05-05T03:40:08.732Z"
+  },
+  {
+    "tvoc": 0,
+    "temperature": 25.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T04:59:17.189Z"
+  },
+  {
+    "tvoc": 0,
+    "temperature": 25.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T04:59:18.348Z"
+  },
+  {
+    "tvoc": 0,
+    "temperature": 25.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T04:59:19.306Z"
+  },
+  {
+    "tvoc": 0,
+    "temperature": 25.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T04:59:20.307Z"
+  },
+  {
+    "tvoc": 0,
+    "temperature": 25.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T04:59:20.887Z"
+  },
+  {
+    "tvoc": 0,
+    "temperature": 25.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T04:59:21.590Z"
   }
 ]

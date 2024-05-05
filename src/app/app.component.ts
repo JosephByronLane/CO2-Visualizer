@@ -35,7 +35,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
 })
 
 export class AppComponent implements OnInit {
-  title = 'angular17-mosquitto';
+  title = 'Proyecto MQTT';
   initialZoom: number = 12; 
   datapointClicked=false;
   client: MqttService | undefined;
