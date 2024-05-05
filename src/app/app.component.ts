@@ -13,7 +13,7 @@ import 'chartjs-adapter-date-fns';
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: '3.128.26.206',
   port: 9001,
-  path: '/',
+  path: '/mqtt',
   protocol: 'ws',
   connectOnCreate: true
 };
