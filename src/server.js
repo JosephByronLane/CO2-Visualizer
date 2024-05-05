@@ -41,6 +41,8 @@ app.post('/save-data/:topic', (req, res) => {
 app.get('/data/:topic', (req, res) => {
     const topic = req.params.topic;
     const filePath = `data_${topic}.json`;
+    console.log("fetching ", topic)
+    console.log("file path ", filePath)
 
     fs.readFile(filePath, (err, data) => {
         if (err) {
