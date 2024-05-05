@@ -11,7 +11,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.post('/save-data/:topic', (req, res) => {
+app.post('/api/save-data/:topic', (req, res) => {
     const topic = req.params.topic;
     const data = req.body;
 
@@ -40,7 +40,7 @@ app.post('/save-data/:topic', (req, res) => {
     });
 });
 
-app.get('/data/:topic', (req, res) => {
+app.get('/api/data/:topic', (req, res) => {
     const topic = req.params.topic;
     const filePath = `data_${topic}.json`;
     console.log("fetching ", topic)

@@ -9,7 +9,7 @@ export class DataSaverService {
   constructor(private http: HttpClient) {}
 
   public sendData(topic: string, data: any): void {
-    this.http.post(`http://http://3.128.26.206/:3000/save-data/${topic}`, data)
+    this.http.post(`http://3.128.26.206:3000/api/save-data/${topic}`, data)
       .subscribe({
         next: (response) => console.log('Data sent to server', response),
         error: (error) => console.error('Error sending data to server', error)
@@ -17,6 +17,6 @@ export class DataSaverService {
   }
 
   public fetchData(topic: string) {
-    return this.http.get<any[]>(`http://http://3.128.26.206/:3000/data/${topic}`);    
+    return this.http.get<any[]>(`http://3.128.26.206:3000/api/data/${topic}`);    
   }
 }
