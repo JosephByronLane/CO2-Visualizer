@@ -1,0 +1,47 @@
+<div class="root">
+  <div class="title">
+      god fuck this shit
+  </div>
+  <div class="content-holder">
+    <div class="google-maps">
+      <google-map  [center]="markers[0].position" height="80vh" width="43.75vw" [zoom]="initialZoom"
+      >
+        @for (marker of markers; track $index) {
+          <map-marker
+          [position]="marker.position"
+          [label]="marker.label"
+          [title]="title"
+          (mapClick)="onMarkerClick(marker)">
+        </map-marker>
+        }
+      </google-map>
+    </div>
+    @if (datapointClicked) {
+      <div class="charts-holder">
+        @for (dataset  of lineChartData.datasets; track $index) {
+          <div class="chart-itself">
+            <canvas baseChart
+            [type]="'line'"
+            [datasets]="[dataset]"
+            [options]="lineChartOptions"
+            [labels]="lineChartData.labels"
+            [legend]="lineChartLegend"
+            >
+            </canvas>
+          </div>
+      }
+    </div>
+    }   
+    @else {
+      <div class="no-chart-selected">
+        <p>
+          select one of them shits man
+        </p>
+      </div>
+    }
+
+  </div>
+</div>
+
+
+

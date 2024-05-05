@@ -1,0 +1,57 @@
+.root{
+    padding: 2.5vh 5vw;
+}
+
+.google-maps{
+    border-radius: 10px;
+    overflow: hidden;
+}
+.content-holder{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title{
+    background-color: #202020;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5vh;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    margin:0 0 2.5vh 0;
+    border-radius: 10px;
+}
+
+.charts-holder{
+    background-color: #202020;
+    height: 80vh;
+    width: 43.75vw;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 3 columns */
+    grid-template-rows: repeat(3, auto); /* 2 rows */
+    border-radius: 10px;
+}
+
+.no-chart-selected{
+    background-color: #202020;
+    height: 80vh;
+    width: 43.75vw;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.no-chart-selected p{
+    color: gray;
+    font-size: 4vh;
+}
+
+.chart-itself{
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "tvoc": 0,
+    "temperature": 30.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T03:40:06.300Z"
+  },
+  {
+    "tvoc": 0,
+    "temperature": 30.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T03:40:07.203Z"
+  },
+  {
+    "tvoc": 0,
+    "temperature": 30.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T03:40:07.951Z"
+  },
+  {
+    "tvoc": 0,
+    "temperature": 30.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 400,
+    "timestamp": "2024-05-05T03:40:08.732Z"
+  }
+]
