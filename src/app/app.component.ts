@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
   }
 
   connection = {
-    hostname: 'localhost',
+    hostname: '3.138.100.11',
     port: 9001,
     path: '/',
     clean: true, // Retain session
