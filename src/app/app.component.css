@@ -5,8 +5,8 @@
 .google-maps{
     border-radius: 10px;
     overflow: hidden;
-    height: 80vh;
-    width: 43.75vw;
+    /* height: 80vh;
+    width: 43.75vw; */
 }
 .google-map{
 
@@ -59,26 +59,4 @@
 }
 
 .chart-itself{
-}
-
-@media (max-width: 1400px) {
-    .content-holder{
-        display: flex;
-        flex-direction: column;
-    }
-    .google-maps{
-        height: 80vh;
-        width: 100%;
-    }
-    .charts-holder{
-        height: 80vh;
-        width: 100%;       
-        margin: 2vh 0vw;
-    }
-    .no-chart-selected{
-        height: 80vh;
-        width: 100%;   
-        margin: 2vh 0vw;
-          
-    }
 }
