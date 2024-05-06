@@ -11,7 +11,7 @@ import { ChartConfiguration, ChartDataset, ChartOptions } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
-  hostname: '3.128.26.206',
+  hostname: '3.138.100.11',
   port: 9001,
   path: '/mqtt',
   protocol: 'ws',
@@ -43,21 +43,6 @@ export class AppComponent implements OnInit {
     this.client = this.mqttService;
   }
 
-  connection = {
-    hostname: '3.138.100.11',
-    port: 9001,
-    path: '/',
-    clean: true, // Retain session
-    connectTimeout: 4000, // Timeout period
-    reconnectPeriod: 4000, // Reconnect period
-    // Authentication information
-    clientId: 'mqttx_597046f4',
-    username: '',
-    password: '',
-    protocol: 'ws',
-  }
-
-
   markers = [
     { id: 1, position: { lat: 20.985794, lng: -89.615382 }, label: { color: 'white', text: 'equipo-1' }},
     { id: 2, position: { lat: 20.975794, lng: -89.615382 }, label: { color: 'white', text: 'equipo-2' }},
@@ -78,7 +63,8 @@ export class AppComponent implements OnInit {
         console.log("sending data to: ", topic)
         this.dataService.sendData(topic, messageData);
       });
-    });  }  
+    });  
+  }  
 
     public lineChartData: ChartConfiguration<'line'>['data'] = {
       datasets: [],
