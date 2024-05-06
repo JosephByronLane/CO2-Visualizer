@@ -35,7 +35,7 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
 })
 
 export class AppComponent implements OnInit {
-  title = 'Proyecto MQTT';
+  title = 'Raspberry Pi-TO';
   initialZoom: number = 12; 
   datapointClicked=false;
   client: MqttService | undefined;

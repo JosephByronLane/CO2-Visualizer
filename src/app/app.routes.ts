@@ -4,7 +4,7 @@ import { AppComponent } from './app.component';
 export const routes: Routes = [
     {
         path: '',
-        title: 'Projecto MQTT',
+        title: 'Raspberry Pi-TO',
         component: AppComponent
     }
 ];

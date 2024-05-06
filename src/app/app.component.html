@@ -1,10 +1,10 @@
 <div class="root">
   <div class="title">
-      god fuck this shit
+    Proyecto MQTT Raspberry Pi-TO
   </div>
   <div class="content-holder">
     <div class="google-maps">
-      <google-map  [center]="markers[0].position" height="80vh" width="43.75vw" [zoom]="initialZoom"
+      <google-map  [center]="markers[0].position" width="100%" height="100%" [zoom]="initialZoom"
       >
         @for (marker of markers; track $index) {
           <map-marker
@@ -35,7 +35,7 @@
     @else {
       <div class="no-chart-selected">
         <p>
-          select one of them shits man
+          Seleccione un marcador.
         </p>
       </div>
     }
