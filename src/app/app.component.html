@@ -2,45 +2,70 @@
   <div class="title">
     Proyecto MQTT Raspberry Pi-TO
   </div>
-  <div class="content-holder">
-    <div class="google-maps">
-      <google-map  [center]="markers[0].position" width="43.75vw" height="80vh" [zoom]="initialZoom"
-      >
-        @for (marker of markers; track $index) {
-          <map-marker
-          [position]="marker.position"
-          [label]="marker.label"
-          [title]="title"
-          (mapClick)="onMarkerClick(marker)">
-        </map-marker>
-        }
-      </google-map>
-    </div>
-    @if (datapointClicked) {
-      <div class="charts-holder">
-        @for (dataset  of lineChartData.datasets; track $index) {
-          <div class="chart-itself">
-            <canvas baseChart
-            [type]="'line'"
-            [datasets]="[dataset]"
-            [options]="lineChartOptions"
-            [labels]="lineChartData.labels"
-            [legend]="lineChartLegend"
-            >
-            </canvas>
-          </div>
-      }
-    </div>
-    }   
-    @else {
-      <div class="no-chart-selected">
-        <p>
-          Seleccione un marcador.
-        </p>
-      </div>
-    }
 
+  @if (!neutered) {
+    <div class="content-holder">
+      <div class="google-maps">
+        <google-map  [center]="markers[0].position" width="43.75vw" height="80vh" [zoom]="initialZoom"
+        >
+          @for (marker of markers; track $index) {
+            <map-marker
+            [position]="marker.position"
+            [label]="marker.label"
+            [title]="title"
+            (mapClick)="onMarkerClick(marker)">
+          </map-marker>
+          }
+        </google-map>
+      </div>
+      @if (datapointClicked) {
+        <div class="charts-holder">
+          @for (dataset  of lineChartData.datasets; track $index) {
+            <div class="chart-itself">
+              <canvas baseChart
+              [type]="'line'"
+              [datasets]="[dataset]"
+              [options]="lineChartOptions"
+              [labels]="lineChartData.labels"
+              [legend]="lineChartLegend"
+              >
+              </canvas>
+            </div>
+        }
+      </div>
+      }   
+      @else {
+        <div class="no-chart-selected">
+          <p>
+            Seleccione un marcador.
+          </p>
+        </div>
+      }
+  
+    </div>
+  }
+  @else {
+    <div class="charts-holder-neutered">
+      @for (dataset  of lineChartData.datasets; track $index) {
+        <div class="chart-itself">
+          <canvas baseChart
+          [type]="'line'"
+          [datasets]="[dataset]"
+          [options]="lineChartOptions"
+          [labels]="lineChartData.labels"
+          [legend]="lineChartLegend"
+          >
+          </canvas>
+        </div>
+    }
   </div>
+    
+
+
+  }
+
+
+
 </div>
 
 

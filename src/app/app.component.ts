@@ -10,6 +10,13 @@ import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { ChartConfiguration, ChartDataset, ChartOptions } from 'chart.js';
 import 'chartjs-adapter-date-fns';
 
+//For de-neuterization
+
+//set the initial state of datapointClicked to false
+//remove line of code that autimatically updates charts.
+//set neutered bool to false
+
+
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: '3.138.100.11',
   port: 9001,
@@ -37,7 +44,8 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
 export class AppComponent implements OnInit {
   title = 'Raspberry Pi-TO';
   initialZoom: number = 12; 
-  datapointClicked=false;
+  datapointClicked=true; //here, set to false
+  neutered = true //set to false here too
   client: MqttService | undefined;
   constructor(private mqttService: MqttService, private dataService: DataSaverService) {
     this.client = this.mqttService;
@@ -63,7 +71,13 @@ export class AppComponent implements OnInit {
         console.log("sending data to: ", topic)
         this.dataService.sendData(topic, messageData);
       });
-    });  
+    });
+
+    //remove for de-neuterization
+    console.log(`Marker clicked: ${"equipo-1"}`);
+    this.dataService.fetchData("equipo-1").subscribe(data => {
+      this.updateChartData(data, "equipo-1");
+    });
   }  
 
     public lineChartData: ChartConfiguration<'line'>['data'] = {
