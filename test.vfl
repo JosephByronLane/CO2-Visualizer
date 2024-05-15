@@ -1,0 +1,33 @@
+
+
+
+// Get the color of the current point.
+vector currentColor = point(0, "Cd", @ptnum);
+
+// Find all neighbors of the current point within a certain search radius.
+// Adjust the radius as needed for your specific geometry.
+float searchRadius = 1 ; // Example search radius.
+int maxPts = 9; // Maximum number of points to consider as neighbors.
+int neighbors[] = nearpoints(0, @ptnum, searchRadius, maxPts);
+
+int colorDiff = 0;
+
+// Check each neighbor's color.
+foreach(int neighborPt; neighbors) {
+    // Skip the point itself (it could be included in the nearpoints result).
+    if (neighborPt != @ptnum) {
+        vector neighborColor = point(0, "Cd", neighborPt);
+        
+        // Compare the colors; if different, set the flag.
+        if (neighborColor != currentColor) {
+            colorDiff = 1;
+            break; // No need to check further neighbors.
+        }
+    }
+}
+
+// If a different-colored neighbor was found, add this point to the group.
+if (colorDiff) {
+    @Cd= set(1,0,0); 
+}
+

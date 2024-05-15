@@ -44,8 +44,8 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
 export class AppComponent implements OnInit {
   title = 'Raspberry Pi-TO';
   initialZoom: number = 12; 
-  datapointClicked=true; //here, set to false
-  neutered = true //set to false here too
+  datapointClicked=false; //here, set to false
+  neutered = false //set to false here too
   client: MqttService | undefined;
   constructor(private mqttService: MqttService, private dataService: DataSaverService) {
     this.client = this.mqttService;
@@ -73,11 +73,6 @@ export class AppComponent implements OnInit {
       });
     });
 
-    //remove for de-neuterization
-    console.log(`Marker clicked: ${"equipo-1"}`);
-    this.dataService.fetchData("equipo-1").subscribe(data => {
-      this.updateChartData(data, "equipo-1");
-    });
   }  
 
     public lineChartData: ChartConfiguration<'line'>['data'] = {
