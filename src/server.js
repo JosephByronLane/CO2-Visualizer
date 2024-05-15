@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
 const app = express();
+const mqtt = require('mqtt');
 const port = 3000;
 
 // Enable CORS for all routes and origins
@@ -10,6 +11,53 @@ const corsOptions = {
   };
 app.use(cors(corsOptions));
 app.use(express.json());
+
+const client = mqtt.connect('mqtt://3.138.100.11');  // Replace 'your_broker_address' with your MQTT broker's address
+
+
+client.on('connect', () => {
+    console.log('Connected to MQTT broker');
+    client.subscribe('equipo-1'); 
+    client.subscribe('equipo-2'); 
+    client.subscribe('equipo-3'); 
+    client.subscribe('equipo-4'); 
+    client.subscribe('equipo-5'); 
+    client.subscribe('equipo-6'); 
+});
+
+client.on('message', (topic, message) => {
+    console.log(`Received message from ${topic}`);
+    saveMessage(topic, message);
+});
+
+function saveMessage(topic, message) {
+    const filePath = `data_${topic}.json`;
+
+    // Convert message from buffer to string and then parse it as JSON
+    const messageObject = JSON.parse(message.toString());
+
+    // Append a timestamp to the incoming data
+    const dataWithTimestamp = { ...messageObject, timestamp: new Date().toISOString() };
+
+    fs.readFile(filePath, (err, fileData) => {
+        let jsonData = [];
+        if (!err && fileData.length > 0) {
+            jsonData = JSON.parse(fileData.toString());
+        }
+        
+        // Append the data with timestamp
+        jsonData.push(dataWithTimestamp);
+
+        fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), (err) => {
+            if (err) {
+                console.error('Error writing to file');
+            } else {
+                console.log('Data saved successfully');
+            }
+        });
+    });
+}
+
 
 app.post('/api/save-data/:topic', (req, res) => {
     const topic = req.params.topic;

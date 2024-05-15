@@ -63,16 +63,16 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const topics = ['equipo-1', 'equipo-2', 'equipo-3', 'equipo-4', 'equipo-5', 'equipo-6'];
-    topics.forEach(topic => {
-      console.log("connecting to topic:", topic)
-      this.mqttService.observe(topic).subscribe((message: IMqttMessage) => {
-        const messageData = JSON.parse(message.payload.toString());
-        console.log("sending data to: ", topic)
-        this.dataService.sendData(topic, messageData);
-      });
-    });
-
+    // const topics = ['equipo-1', 'equipo-2', 'equipo-3', 'equipo-4', 'equipo-5', 'equipo-6'];
+    // topics.forEach(topic => {
+    //   console.log("connecting to topic:", topic)
+    //   this.mqttService.observe(topic).subscribe((message: IMqttMessage) => {
+    //     const messageData = JSON.parse(message.payload.toString());
+    //     console.log("sending data to: ", topic)
+    //     this.dataService.sendData(topic, messageData);
+    //   });
+    // }); 
+  
   }  
 
     public lineChartData: ChartConfiguration<'line'>['data'] = {

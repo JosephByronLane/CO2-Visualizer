@@ -78,5 +78,17 @@
     "humidity": 36.50713,
     "co2": 400,
     "timestamp": "2024-05-05T04:59:21.590Z"
+  },
+  {
+    "data": "  {\r\n    \"tvoc\": 155500,\r\n    \"temperature\": 30.62916,\r\n    \"aqi\": 1,\r\n    \"humidity\": 36.50713,\r\n    \"co2\": 0\r\n  }",
+    "timestamp": "2024-05-15T03:54:02.722Z"
+  },
+  {
+    "tvoc": 155500,
+    "temperature": 30.62916,
+    "aqi": 1,
+    "humidity": 36.50713,
+    "co2": 0,
+    "timestamp": "2024-05-15T04:03:39.213Z"
   }
 ]
