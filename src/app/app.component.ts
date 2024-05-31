@@ -44,8 +44,9 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
 export class AppComponent implements OnInit {
   title = 'Raspberry Pi-TO';
   initialZoom: number = 12; 
-  datapointClicked=false; //here, set to false
-  neutered = false //set to false here too
+  datapointClicked=false; 
+  neutered=false
+  currentlyClickedMarker = "";
   client: MqttService | undefined;
   constructor(private mqttService: MqttService, private dataService: DataSaverService) {
     this.client = this.mqttService;
@@ -63,15 +64,15 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // const topics = ['equipo-1', 'equipo-2', 'equipo-3', 'equipo-4', 'equipo-5', 'equipo-6'];
-    // topics.forEach(topic => {
-    //   console.log("connecting to topic:", topic)
-    //   this.mqttService.observe(topic).subscribe((message: IMqttMessage) => {
-    //     const messageData = JSON.parse(message.payload.toString());
-    //     console.log("sending data to: ", topic)
-    //     this.dataService.sendData(topic, messageData);
-    //   });
-    // }); 
+    const topics = ['equipo-1', 'equipo-2', 'equipo-3', 'equipo-4', 'equipo-5', 'equipo-6'];
+    topics.forEach(topic => {
+      console.log("connecting to topic:", topic)
+      this.mqttService.observe(topic).subscribe((message: IMqttMessage) => {
+        console.log("recieved updated dara from: ", topic)
+        this.dataService.fetchData(this.currentlyClickedMarker).subscribe(data => {
+          this.updateChartData(data, this.currentlyClickedMarker);
+        });      });
+    }); 
   
   }  
 
@@ -115,7 +116,7 @@ export class AppComponent implements OnInit {
 
     onMarkerClick(marker: any): void {
       this.datapointClicked=true;
-
+      this.currentlyClickedMarker = marker.label.text;
       console.log(`Marker clicked: ${marker.label.text}`);
       this.dataService.fetchData(marker.label.text).subscribe(data => {
         this.updateChartData(data, marker.label.text);

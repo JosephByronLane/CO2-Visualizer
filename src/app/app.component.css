@@ -40,7 +40,17 @@
     grid-template-rows: repeat(3, auto); /* 2 rows */
     border-radius: 10px;
 }
+.chart-description{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 
+}
+.chart-description p{
+    display: flex;
+    font-family: "Roboto", sans-serif;
+    
+}
 .charts-holder-neutered{
     background-color: #202020;
     height: 80vh;

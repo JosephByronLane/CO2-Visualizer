@@ -1,5 +1,13 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+#data files
+data_equipo-1.json
+data_equipo-2.json
+data_equipo-3.json
+data_equipo-4.json
+data_equipo-5.json
+data_equipo-6.json
+
 # Compiled output
 /tmp
 /out-tsc
