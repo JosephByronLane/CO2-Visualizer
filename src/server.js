@@ -38,18 +38,15 @@ function saveMessage(topic, message) {
     const filePath = `data_${topic}.json`;
     console.log("File path:", filePath);
 
-    // Convert message from buffer to string and then parse it as JSON
     const messageObject = JSON.parse(message.toString());
     console.log("messageObject:", messageObject);
 
-    // Append a timestamp to the incoming data
     const dataWithTimestamp = { ...messageObject, timestamp: new Date().toISOString() };
 
     fs.readFile(filePath, (err, fileData) => {
         let jsonData = [];
         if (err) {
             if (err.code === 'ENOENT') {
-                // File does not exist, initialize jsonData as an empty array
                 console.log("File does not exist, initializing new file.");
                 jsonData = [];
             } else {
@@ -63,12 +60,10 @@ function saveMessage(topic, message) {
                 }
             } catch (parseErr) {
                 console.error("Error parsing JSON from file:", parseErr);
-                // If parsing fails, initialize jsonData as an empty array
                 jsonData = [];
             }
         }
 
-        // Append the data with timestamp
         jsonData.push(dataWithTimestamp);
 
         fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), (err) => {
@@ -92,7 +87,6 @@ app.post('/api/save-data/:topic', (req, res) => {
     console.log("topic:", topic)
     console.log("data:", data)
 
-    // Append a timestamp to the incoming data
     const timestamp = new Date();
     const dataWithTimestamp = { ...data, timestamp: timestamp.toISOString() };
 
@@ -105,7 +99,6 @@ app.post('/api/save-data/:topic', (req, res) => {
             jsonData = JSON.parse(fileData.toString());
         }
         
-        // Append the data with timestamp
         jsonData.push(dataWithTimestamp);
 
         fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), (err) => {
@@ -123,8 +116,8 @@ app.get('/api/data/:topic', (req, res) => {
     console.log("GET")
     const topic = req.params.topic;
     const filePath = `data_${topic}.json`;
-    console.log("fetching ", topic)
-    console.log("file path ", filePath)
+    console.log("topic ", topic)
+    console.log("filePath ", filePath)
 
     fs.readFile(filePath, (err, data) => {
         if (err) {

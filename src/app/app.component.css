@@ -82,3 +82,19 @@
     width: 100%;
     height: 100%;
 }
+
+.desc-actual{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 30px;
+    margin-top: 2vh;
+    font-family: "Roboto", sans-serif;
+
+}
+.desc-holder{
+    background-color: #202020;
+    border-radius: 10px;
+    padding: 1vh 1vw;
+    height: 25vh;
+}
+

@@ -1,10 +1,9 @@
 [
   {
     "tvoc": 0,
-    "temperature": 30.62916,
-    "aqi": 1,
-    "humidity": 36.50713,
-    "co2": 400,
-    "timestamp": "2024-05-05T03:40:18.444Z"
+    "temperature": 0,
+    "aqi": 0,
+    "humidity": 0,
+    "co2": 0
   }
 ]
