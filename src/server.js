@@ -30,37 +30,58 @@ client.on('message', (topic, message) => {
     saveMessage(topic, message);
 });
 
+const fs = require('fs');
+
 function saveMessage(topic, message) {
-    console.log("---------------------")
-    console.log("saveMessageFunction")
-    
+    console.log("---------------------");
+    console.log("saveMessageFunction");
+
     const filePath = `data_${topic}.json`;
-    console.log("File path:", filePath)
+    console.log("File path:", filePath);
+
     // Convert message from buffer to string and then parse it as JSON
     const messageObject = JSON.parse(message.toString());
-    console.log("messageObject:", messageObject)
+    console.log("messageObject:", messageObject);
 
     // Append a timestamp to the incoming data
     const dataWithTimestamp = { ...messageObject, timestamp: new Date().toISOString() };
 
     fs.readFile(filePath, (err, fileData) => {
         let jsonData = [];
-        if (!err && fileData.length > 0) {
-            jsonData = JSON.parse(fileData.toString());
+        if (err) {
+            if (err.code === 'ENOENT') {
+                // File does not exist, initialize jsonData as an empty array
+                console.log("File does not exist, initializing new file.");
+                jsonData = [];
+            } else {
+                console.error("Error reading file:", err);
+                return;
+            }
+        } else {
+            try {
+                if (fileData.length > 0) {
+                    jsonData = JSON.parse(fileData.toString());
+                }
+            } catch (parseErr) {
+                console.error("Error parsing JSON from file:", parseErr);
+                // If parsing fails, initialize jsonData as an empty array
+                jsonData = [];
+            }
         }
-        
+
         // Append the data with timestamp
         jsonData.push(dataWithTimestamp);
 
         fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), (err) => {
             if (err) {
-                console.error('Error writing to file');
+                console.error('Error writing to file:', err);
             } else {
                 console.log('Data saved successfully');
             }
         });
     });
 }
+
 
 
 app.post('/api/save-data/:topic', (req, res) => {
