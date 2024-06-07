@@ -30,7 +30,6 @@ client.on('message', (topic, message) => {
     saveMessage(topic, message);
 });
 
-const fs = require('fs');
 
 function saveMessage(topic, message) {
     console.log("---------------------");
