@@ -85,7 +85,7 @@ export class AppComponent implements OnInit {
         x: {
           type: 'time',
           ticks: {
-            display: false // Hides the x-axis labels
+            display: false 
           }
         },
         y: {
@@ -98,9 +98,8 @@ export class AppComponent implements OnInit {
           intersect: false,
           callbacks: {
             title: function(tooltipItems) {
-              // Parsing the timestamp directly from the tooltip item
               try {
-                const rawTimestamp = tooltipItems[0].parsed.x;  // Assuming this is where the timestamp is stored
+                const rawTimestamp = tooltipItems[0].parsed.x;  
                 return new Date(rawTimestamp).toLocaleString();
               } catch (e) {
                 console.error('Error parsing date:', e);

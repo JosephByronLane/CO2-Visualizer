@@ -5,14 +5,13 @@ const app = express();
 const mqtt = require('mqtt');
 const port = 3000;
 
-// Enable CORS for all routes and origins
 const corsOptions = {
     origin: '*'
   };
 app.use(cors(corsOptions));
 app.use(express.json());
 
-const client = mqtt.connect('mqtt://3.138.100.11');  // Replace 'your_broker_address' with your MQTT broker's address
+const client = mqtt.connect('mqtt://3.138.100.11'); 
 
 
 client.on('connect', () => {
